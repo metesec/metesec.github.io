@@ -1,20 +1,25 @@
 {
-  "name": "blowfish_template",
+  "name": "metesec-site",
   "version": "1.0.0",
-  "description": "Blowfish Template",
-  "main": "index.js",
+  "private": true,
+  "description": "The source for the MeteSec cybersecurity website.",
   "scripts": {
-    "dev": "hugo server --minify -D -E -F"
+    "dev": "hugo server --minify -D -E -F",
+    "build": "hugo --minify"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nunocoracao/blowfish_template.git"
+    "url": "git+https://github.com/metesec/metesec.github.io.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cybersecurity",
+    "hugo",
+    "blowfish"
+  ],
+  "author": "Mete Demirci",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nunocoracao/blowfish_template/issues"
+    "url": "https://github.com/metesec/metesec.github.io/issues"
   },
-  "homepage": "https://github.com/nunocoracao/blowfish_template#readme"
+  "homepage": "https://metesec.github.io/"
 }
