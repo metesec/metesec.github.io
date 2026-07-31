@@ -1,6 +1,23 @@
-# Blowfish Template
-This is a template for the Blowfish Hugo Theme. Feel free to use this repo as a quick way to get started with Blowfish. Please visit [Blowfish's main website](https://github.com/nunocoracao/blowfish) to read the complete documentation.
+# MeteSec
 
-The template was built using the [Git option](https://nunocoracao.github.io/blowfish/docs/installation/#install-using-git) from Blowfish's installations instructions.
+Source for [metesec.github.io](https://metesec.github.io/), a personal cybersecurity site built around one idea: **Build. Break. Defend.**
 
-![blowfish logo](https://github.com/nunocoracao/blowfish_template/blob/main/logo.png?raw=true)
+The site documents practical projects, technical deep dives, commentary, and an honest learning journey across security engineering, offensive security, and cyber defense.
+
+## Stack
+
+- [Hugo](https://gohugo.io/)
+- [Blowfish](https://blowfish.page/) theme
+- GitHub Actions and GitHub Pages
+
+## Local development
+
+Clone the repository including its theme submodule, then run:
+
+```bash
+hugo server --minify -D -E -F
+```
+
+## Content model
+
+Articles use one editorial category—`Build`, `Break`, `Defend`, `Journey`, or `Commentary`—and up to four terms from the controlled tag vocabulary documented on the site.
