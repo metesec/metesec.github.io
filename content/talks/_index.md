@@ -1,11 +1,7 @@
 ---
 title: "Talks"
-description: "Talks, sessions, and ideas worth discussing in public."
+description: "Selected talks and keynotes on cybersecurity, career paths, detection, and security operations."
 showDate: false
 ---
 
-This page is the future home for talks, workshops, and community sessions.
-
-Topics I am interested in developing into sessions include practical detection engineering, connecting offensive insight with defensive outcomes, and building a sustainable cybersecurity learning practice.
-
-Confirmed appearances and published material will be added here with dates, abstracts, and slides when available.
+This section collects selected talks, keynotes, and public sessions together with their context, recordings, and supporting material where available.
