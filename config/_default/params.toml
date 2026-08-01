@@ -6,6 +6,7 @@ autoSwitchAppearance = true
 
 enableSearch = true
 enableCodeCopy = true
+highlightCurrentMenuArea = true
 mainSections = ["posts"]
 defaultBackgroundImage = "img/background.svg"
 
@@ -78,3 +79,4 @@ defaultBackgroundImage = "img/background.svg"
 [verification]
   # google = ""
   # bing = ""
+

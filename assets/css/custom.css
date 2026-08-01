@@ -1,3 +1,120 @@
+/* MeteSec accent system --------------------------------------------------- */
+
+:root {
+  /* One warm accent throughout the site. The neutral Noir palette remains
+     dominant; orange is reserved for orientation and interaction. */
+  --color-primary-50: 255, 247, 237;
+  --color-primary-100: 255, 237, 213;
+  --color-primary-200: 254, 215, 170;
+  --color-primary-300: 253, 186, 116;
+  --color-primary-400: 251, 146, 60;
+  --color-primary-500: 249, 115, 22;
+  --color-primary-600: 234, 88, 12;
+  --color-primary-700: 194, 65, 12;
+  --color-primary-800: 154, 52, 18;
+  --color-primary-900: 124, 45, 18;
+
+  /* Blowfish uses secondary colors for a few badges. Keeping both scales in
+     the same family prevents an unrelated blue accent from appearing. */
+  --color-secondary-50: 255, 247, 237;
+  --color-secondary-100: 255, 237, 213;
+  --color-secondary-200: 254, 215, 170;
+  --color-secondary-300: 253, 186, 116;
+  --color-secondary-400: 251, 146, 60;
+  --color-secondary-500: 249, 115, 22;
+  --color-secondary-600: 234, 88, 12;
+  --color-secondary-700: 194, 65, 12;
+  --color-secondary-800: 154, 52, 18;
+  --color-secondary-900: 124, 45, 18;
+
+  --metesec-accent: 249, 115, 22;
+  --metesec-accent-strong: 194, 65, 12;
+}
+
+.dark {
+  --metesec-accent: 251, 146, 60;
+  --metesec-accent-strong: 249, 115, 22;
+}
+
+::selection {
+  background: rgba(var(--metesec-accent), 0.28);
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--metesec-accent));
+  outline-offset: 3px;
+}
+
+.main-menu a,
+#site-footer a {
+  transition: color 160ms ease;
+}
+
+.main-menu a span.active {
+  position: relative;
+  color: rgb(var(--metesec-accent));
+}
+
+.main-menu a span.active::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.38rem;
+  left: 0;
+  height: 2px;
+  border-radius: 9999px;
+  background: rgb(var(--metesec-accent));
+  content: "";
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  text-decoration-color: rgba(var(--metesec-accent), 0.55);
+  text-decoration-thickness: 0.09em;
+  text-underline-offset: 0.18em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)):hover {
+  color: rgb(var(--metesec-accent-strong));
+  text-decoration-color: currentColor;
+}
+
+.dark .prose :where(a):not(:where([class~="not-prose"] *)):hover {
+  color: rgb(var(--metesec-accent));
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  border-inline-start: 0.2rem solid rgb(var(--metesec-accent));
+  padding-inline-start: 0.8rem;
+}
+
+.article-link--card,
+.article-link--related,
+.article-link--simple,
+.article-link--shortcode,
+.prose article.rounded-xl {
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.article-link--card:hover,
+.article-link--related:hover,
+.article-link--simple:hover,
+.article-link--shortcode:hover,
+.prose article.rounded-xl:hover {
+  border-color: rgba(var(--metesec-accent), 0.7);
+  box-shadow: 0 12px 28px rgba(var(--metesec-accent), 0.09);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-link--card,
+  .article-link--related,
+  .article-link--simple,
+  .article-link--shortcode,
+  .prose article.rounded-xl {
+    transition: none;
+  }
+}
+
 /* CV introduction --------------------------------------------------------- */
 
 .cv-hero {
@@ -70,7 +187,7 @@
 
 .cert-intro__eyebrow {
   margin: 0 0 0.65rem;
-  color: #ea580c;
+  color: rgb(var(--color-primary-700));
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -122,7 +239,7 @@
 }
 
 .cert-intro__stats strong {
-  color: #ea580c;
+  color: rgb(var(--color-primary-600));
 }
 
 .cert-roadmap-placeholder {
@@ -149,7 +266,7 @@
   height: 3rem;
   place-items: center;
   border-radius: 9999px;
-  background: #ea580c;
+  background: rgb(var(--color-primary-600));
   color: white;
   font-size: 1.4rem;
   font-weight: 900;
@@ -241,13 +358,13 @@
 
 .cert-card__date {
   margin: 0;
-  color: #c2410c;
+  color: rgb(var(--color-primary-700));
   font-size: 0.9rem;
   font-weight: 750;
 }
 
 .dark .cert-card__date {
-  color: #fb923c;
+  color: rgb(var(--color-primary-400));
 }
 
 .cert-card__description {
@@ -275,13 +392,13 @@
 .cert-card__link {
   align-self: flex-start;
   margin-top: 1rem;
-  color: #c2410c;
+  color: rgb(var(--color-primary-700));
   font-weight: 750;
   text-decoration: none;
 }
 
 .dark .cert-card__link {
-  color: #fb923c;
+  color: rgb(var(--color-primary-400));
 }
 
 .cert-card__link:hover {
@@ -384,7 +501,7 @@
 
 .talk-deck__eyebrow {
   margin: 0 0 0.35rem;
-  color: #ea580c;
+  color: rgb(var(--color-primary-700));
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -416,7 +533,7 @@
   flex: 0 0 auto;
   padding: 0.7rem 1rem;
   border-radius: 0.65rem;
-  background: #ea580c;
+  background: rgb(var(--color-primary-600));
   color: #ffffff !important;
   font-size: 0.9rem;
   font-weight: 800;
@@ -424,7 +541,7 @@
 }
 
 .talk-deck__download:hover {
-  background: #c2410c;
+  background: rgb(var(--color-primary-700));
 }
 
 .talk-deck__viewer {
@@ -470,3 +587,4 @@
     text-align: center;
   }
 }
+
