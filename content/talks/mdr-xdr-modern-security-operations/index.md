@@ -27,6 +27,25 @@ The session covers:
 
 The central question is not which acronym is newest. It is how an organization can build security operations that match its risks, available expertise, resources, and need for external support.
 
+## Slides
+
+<div class="talk-deck not-prose">
+  <div class="talk-deck__header">
+    <div>
+      <p class="talk-deck__eyebrow">Keynote deck</p>
+      <h3>MDR &amp; XDR: Moderne Security Operations verstehen</h3>
+      <p class="talk-deck__meta">12 slides · PowerPoint · 1.41 MB</p>
+    </div>
+    <a class="talk-deck__download" href="/downloads/mete-demirci-mdr-xdr-keynote-2026.pptx" download>Download PPTX</a>
+  </div>
+
+  <div class="talk-deck__viewer">
+    <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fmetesec.github.io%2Fdownloads%2Fmete-demirci-mdr-xdr-keynote-2026.pptx" title="MDR and XDR keynote slide viewer" loading="lazy" allowfullscreen></iframe>
+  </div>
+
+  <p class="talk-deck__note">The presentation file is hosted on this site. The interactive preview is rendered by Microsoft Office Online. If the preview is unavailable, use the PPTX download above.</p>
+</div>
+
 ## Recording
 
 A public recording is not available yet. It will be added here when it becomes available.
