@@ -19,13 +19,12 @@ showHeadingAnchors: true
 
 ## Learning Roadmap
 
-<div class="cert-roadmap-placeholder not-prose">
-  <div class="cert-roadmap-placeholder__marker" aria-hidden="true">↗</div>
-  <div>
-    <strong>Roadmap concept reserved</strong>
-    <p>A chronological visual can be added here once the final direction and style are defined.</p>
-  </div>
-</div>
+<figure class="cert-roadmap-visual not-prose">
+  <a class="cert-roadmap-visual__link" href="/img/certification-roadmap-concept.png" target="_blank" rel="noopener noreferrer" aria-label="Open the certification roadmap concept in full size">
+    <img src="/img/certification-roadmap-concept.png" alt="Cybersecurity certification roadmap concept showing a path from fundamentals toward technical specialization" width="1674" height="943" loading="eager" decoding="async" />
+  </a>
+  <figcaption>Roadmap concept — a visual guide from foundations toward technical specialization, not a mandatory certification path.</figcaption>
+</figure>
 
 ## CompTIA
 
