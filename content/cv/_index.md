@@ -6,15 +6,15 @@ showTableOfContents: true
 showHeadingAnchors: true
 ---
 
-<div class="not-prose mb-10 grid items-center gap-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 shadow-sm sm:grid-cols-3 dark:border-neutral-700 dark:bg-neutral-800/60">
-  <div class="flex justify-center sm:justify-start">
-    {{< figure src="img/20221007-Bewerbungsbild.jpg" alt="Portrait of Mete Demirci" class="h-40 w-40 rounded-full object-cover object-top shadow-lg ring-4 ring-primary-500" figureClass="m-0" nozoom="true" >}}
+<div class="cv-hero not-prose mb-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 shadow-sm dark:border-neutral-700 dark:bg-neutral-800/60">
+  <div class="cv-hero__portrait">
+    {{< figure src="img/20221007-Bewerbungsbild.jpg" alt="Portrait of Mete Demirci" class="cv-hero__portrait-image nozoom" figureClass="cv-hero__portrait-figure" nozoom="true" >}}
   </div>
-  <div class="sm:col-span-2">
+  <div class="cv-hero__content">
     <p class="mb-2 mt-0 text-sm font-semibold uppercase tracking-widest text-primary-600 dark:text-primary-400">Senior Cybersecurity Consultant</p>
     <h2 class="my-0 text-3xl font-extrabold text-neutral-900 dark:text-neutral-100">Mete Demirci</h2>
     <p class="mt-4 max-w-3xl text-base leading-relaxed text-neutral-600 dark:text-neutral-300">Cybersecurity professional with experience across security operations, detection and response, security governance, infrastructure security, and identity and access management.</p>
-    <div class="mt-6 flex flex-wrap gap-3">
+    <div class="cv-hero__links mt-6 flex flex-wrap gap-3">
       <a href="https://www.linkedin.com/in/mete-demirci-011057253" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-primary-600 px-4 py-2 font-semibold text-white no-underline transition hover:bg-primary-500">LinkedIn</a>
       <a href="https://github.com/metesec" target="_blank" rel="noopener noreferrer" class="rounded-lg border border-neutral-300 px-4 py-2 font-semibold text-neutral-800 no-underline transition hover:border-primary-500 hover:text-primary-600 dark:border-neutral-600 dark:text-neutral-100 dark:hover:border-primary-400 dark:hover:text-primary-400">GitHub</a>
     </div>
