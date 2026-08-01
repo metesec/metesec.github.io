@@ -85,7 +85,7 @@ Working across security operations, managed detection and response, security gov
 
 ## Selected Engagements
 
-Customer names are intentionally omitted. The focus here is on the work, responsibilities, and outcomes that can be shared publicly.
+Selected client engagements across healthcare, banking, and pharmaceutical environments.
 
 <div class="not-prose my-8 space-y-5">
   <article class="rounded-xl border border-neutral-200 p-6 shadow-sm dark:border-neutral-700 dark:bg-neutral-800/30">
@@ -93,7 +93,7 @@ Customer names are intentionally omitted. The focus here is on the work, respons
       <h3 class="m-0 text-xl font-bold text-neutral-900 dark:text-neutral-100">SOC Capability Development</h3>
       <span class="rounded-full border border-primary-500 bg-transparent px-3 py-1 text-sm font-semibold text-primary-700 dark:border-primary-400 dark:text-primary-300">Mar 2026 — Present</span>
     </div>
-    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">Statutory health insurer</p>
+    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">DAK-Gesundheit</p>
     <ul class="mb-0 text-neutral-700 dark:text-neutral-300">
       <li>Administered and configured Microsoft Sentinel and developed operational workbooks.</li>
       <li>Selected and onboarded additional log sources and connectors.</li>
@@ -107,7 +107,7 @@ Customer names are intentionally omitted. The focus here is on the work, respons
       <h3 class="m-0 text-xl font-bold text-neutral-900 dark:text-neutral-100">Managed Detection &amp; Response Onboarding</h3>
       <span class="rounded-full border border-primary-500 bg-transparent px-3 py-1 text-sm font-semibold text-primary-700 dark:border-primary-400 dark:text-primary-300">Mar — Jul 2026</span>
     </div>
-    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">German healthcare group</p>
+    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">Sana IT Services</p>
     <ul class="mb-0 text-neutral-700 dark:text-neutral-300">
       <li>Designed the target architecture and operating model for an MDR service.</li>
       <li>Led the technical onboarding and coordinated operational and executive stakeholders.</li>
@@ -121,7 +121,7 @@ Customer names are intentionally omitted. The focus here is on the work, respons
       <h3 class="m-0 text-xl font-bold text-neutral-900 dark:text-neutral-100">Security Governance Remediation</h3>
       <span class="rounded-full border border-primary-500 bg-transparent px-3 py-1 text-sm font-semibold text-primary-700 dark:border-primary-400 dark:text-primary-300">Mar 2026 — Present</span>
     </div>
-    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">Public development bank</p>
+    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">Investitions- und Strukturbank Rheinland-Pfalz (ISB)</p>
     <ul class="mb-0 text-neutral-700 dark:text-neutral-300">
       <li>Developed governance documentation in response to security audit findings.</li>
       <li>Created organizational policies, standards, operating procedures, and process models.</li>
@@ -135,7 +135,7 @@ Customer names are intentionally omitted. The focus here is on the work, respons
       <h3 class="m-0 text-xl font-bold text-neutral-900 dark:text-neutral-100">eHealth Security Architecture</h3>
       <span class="rounded-full border border-primary-500 bg-transparent px-3 py-1 text-sm font-semibold text-primary-700 dark:border-primary-400 dark:text-primary-300">Mar — Aug 2025</span>
     </div>
-    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">National healthcare environment</p>
+    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">gematik</p>
     <ul class="mb-0 text-neutral-700 dark:text-neutral-300">
       <li>Developed a threat-modeling report for a security identity provider.</li>
       <li>Assessed architectural threats, trust boundaries, and security risks.</li>
@@ -149,7 +149,7 @@ Customer names are intentionally omitted. The focus here is on the work, respons
       <h3 class="m-0 text-xl font-bold text-neutral-900 dark:text-neutral-100">SOC Process Development</h3>
       <span class="rounded-full border border-primary-500 bg-transparent px-3 py-1 text-sm font-semibold text-primary-700 dark:border-primary-400 dark:text-primary-300">Oct — Dec 2025</span>
     </div>
-    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">Global pharmaceutical company</p>
+    <p class="mt-2 font-medium text-neutral-500 dark:text-neutral-400">Bayer</p>
     <ul class="mb-0 text-neutral-700 dark:text-neutral-300">
       <li>Developed automation concepts for SOC analyst workflows using Microsoft Logic Apps.</li>
       <li>Updated the core standard operating procedure template.</li>
