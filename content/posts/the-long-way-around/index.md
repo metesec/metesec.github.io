@@ -1,5 +1,5 @@
 ---
-title: "The Long Way Around: How Certifications Taught Me to Learn IT"
+title: "Where My Cybersecurity Journey Began"
 date: 2026-07-31 15:48:00 +0200
 categories:
   - Journey

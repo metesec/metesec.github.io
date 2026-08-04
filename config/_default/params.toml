@@ -60,7 +60,7 @@ defaultBackgroundImage = "img/background.svg"
   showSummary = true
   showTableOfContents = false
   showCards = true
-  groupByYear = true
+  groupByYear = false
   cardView = true
   cardViewScreenWidth = false
 
