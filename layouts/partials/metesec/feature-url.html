@@ -1,0 +1,23 @@
+{{- $page := . -}}
+{{- $featured := "" -}}
+{{- $featuredURL := "" -}}
+{{- with $page.Params.featureimage -}}
+  {{- if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") -}}
+    {{- $featuredURL = . -}}
+  {{- else -}}
+    {{- $featured = $page.Resources.Get . | default (resources.Get .) -}}
+  {{- end -}}
+{{- end -}}
+{{- if not (or $featured $featuredURL) -}}
+  {{- $images := $page.Resources.ByType "image" -}}
+  {{- range slice "*featured*" "*feature*" "*cover*" "*thumbnail*" -}}
+    {{- if not $featured -}}{{- $featured = $images.GetMatch . -}}{{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- with $featured -}}
+  {{- $featuredURL = .RelPermalink -}}
+  {{- if ne .MediaType.SubType "svg" -}}
+    {{- $featuredURL = (.Resize "1200x webp q85").RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+{{- return $featuredURL -}}

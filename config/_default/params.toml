@@ -6,9 +6,18 @@ autoSwitchAppearance = true
 
 enableSearch = true
 enableCodeCopy = true
+enableA11y = true
+enableStructuredBreadcrumbs = true
 highlightCurrentMenuArea = true
 mainSections = ["posts"]
 defaultBackgroundImage = "img/background.svg"
+defaultSocialImage = "img/background.svg"
+linkedinURL = "https://www.linkedin.com/in/mete-demirci-011057253"
+githubURL = "https://github.com/metesec"
+# Add these URLs once the external accounts are ready. Their UI is already
+# implemented and appears automatically when a value is configured.
+newsletterURL = ""
+kofiURL = ""
 
 [header]
   layout = "fixed"
@@ -53,7 +62,11 @@ defaultBackgroundImage = "img/background.svg"
   showAuthorsBadges = false
   showWordCount = true
   showSummary = true
-  sharingLinks = ["linkedin"]
+  showRelatedContent = true
+  relatedContentLimit = 3
+  sharingLinks = ["linkedin", "reddit", "email"]
+  showComments = false
+  showZenMode = true
 
 [list]
   showBreadcrumbs = true
@@ -79,4 +92,12 @@ defaultBackgroundImage = "img/background.svg"
 [verification]
   # google = ""
   # bing = ""
+
+[comments]
+  enabled = false
+  provider = "giscus"
+  repo = "metesec/metesec.github.io"
+  repoId = ""
+  category = "Announcements"
+  categoryId = ""
 

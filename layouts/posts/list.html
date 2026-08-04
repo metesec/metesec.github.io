@@ -1,0 +1,145 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+  {{ $pages := .RegularPages.ByDate.Reverse }}
+  {{ $paginator := .Paginate $pages }}
+  {{ $featured := index $pages 0 }}
+
+  <header class="writing-hero">
+    {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+      {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <div class="writing-hero__eyebrow">Independent cybersecurity writing</div>
+    <div class="writing-hero__content">
+      <div>
+        <h1>{{ .Title }}</h1>
+        <p>{{ .Description }}</p>
+        <p class="writing-hero__note">Clear explanations, tested ideas, and honest lessons from building, breaking, and defending systems.</p>
+      </div>
+      <div class="writing-hero__actions">
+        <button class="button button--primary" id="writing-search-button" type="button">
+          <span aria-hidden="true">⌕</span> Search all writing
+        </button>
+        <a class="button button--quiet" href="{{ "posts/index.xml" | relURL }}">Follow via RSS</a>
+      </div>
+    </div>
+
+    <nav class="topic-nav" aria-label="Filter writing by topic">
+      <button class="topic-chip is-active" type="button" data-writing-filter="all" aria-pressed="true">All topics</button>
+      {{ range first 7 site.Taxonomies.tags.ByCount }}
+        <button class="topic-chip" type="button" data-writing-filter="{{ .Page.LinkTitle | lower }}" aria-pressed="false">
+          {{ .Page.LinkTitle }} <span>{{ .Count }}</span>
+        </button>
+      {{ end }}
+      <a class="topic-chip topic-chip--link" href="{{ "tags/" | relURL }}">Browse every topic →</a>
+    </nav>
+  </header>
+
+  <div class="writing-layout">
+    <div class="writing-feed">
+      {{ if and (eq $paginator.PageNumber 1) $featured }}
+        {{ $featuredURL := partial "metesec/feature-url.html" $featured }}
+        <article class="featured-story writing-filter-item"
+          data-search="{{ printf "%s %s %s" $featured.Title $featured.Description (delimit $featured.Params.tags " ") | lower | plainify }}"
+          data-tags="{{ delimit $featured.Params.tags "|" | lower }}">
+          {{ with $featuredURL }}
+            <a class="featured-story__media" href="{{ $featured.RelPermalink }}" aria-label="Read {{ $featured.Title }}">
+              <img src="{{ . }}" alt="" width="1200" height="800" fetchpriority="high" decoding="async">
+            </a>
+          {{ end }}
+          <div class="featured-story__body">
+            <div class="story-label">Featured story</div>
+            <h2><a href="{{ $featured.RelPermalink }}">{{ $featured.Title }}</a></h2>
+            <p>{{ $featured.Description | default ($featured.Summary | plainify) }}</p>
+            <div class="story-meta">
+              <time datetime="{{ $featured.Date.Format "2006-01-02" }}">{{ $featured.Date | time.Format site.Params.dateFormat }}</time>
+              <span>{{ $featured.ReadingTime }} min read</span>
+            </div>
+            <a class="story-link" href="{{ $featured.RelPermalink }}">Read the story <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      {{ end }}
+
+      <div class="section-heading">
+        <div>
+          <span class="section-heading__eyebrow">The archive</span>
+          <h2>Latest writing</h2>
+        </div>
+        <p id="writing-result-count" aria-live="polite">{{ len $paginator.Pages }} articles on this page</p>
+      </div>
+
+      <div class="writing-list" id="writing-list">
+        {{ range $paginator.Pages }}
+          {{ $article := . }}
+          {{ $imageURL := partial "metesec/feature-url.html" . }}
+          <article class="writing-card writing-filter-item"
+            data-search="{{ printf "%s %s %s" .Title .Description (delimit .Params.tags " ") | lower | plainify }}"
+            data-tags="{{ delimit .Params.tags "|" | lower }}">
+            {{ with $imageURL }}
+              <a class="writing-card__media" href="{{ $article.RelPermalink }}" tabindex="-1" aria-hidden="true">
+                <img src="{{ . }}" alt="" width="720" height="480" loading="lazy" decoding="async">
+              </a>
+            {{ end }}
+            <div class="writing-card__body">
+              <div class="story-label">{{ with index .Params.categories 0 }}{{ . }}{{ else }}Article{{ end }}</div>
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <p>{{ .Description | default (.Summary | plainify) }}</p>
+              <div class="story-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date | time.Format site.Params.dateFormat }}</time>
+                <span>{{ .ReadingTime }} min read</span>
+              </div>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+      <div class="writing-empty" id="writing-empty" hidden>
+        <h3>No articles match this topic yet.</h3>
+        <p>Try another topic or use the full-text search.</p>
+      </div>
+      {{ partial "pagination.html" . }}
+    </div>
+
+    <aside class="writing-sidebar" aria-label="Writing resources">
+      <section class="sidebar-card sidebar-card--accent">
+        <span class="sidebar-card__eyebrow">Start here</span>
+        <h2>New to MeteSec?</h2>
+        <p>Learn why this site exists, what gets published, and how experience, research, and opinion are separated.</p>
+        <a href="{{ "about/" | relURL }}">About MeteSec →</a>
+      </section>
+
+      <section class="sidebar-card">
+        <span class="sidebar-card__eyebrow">Popular &amp; recommended</span>
+        <ol class="popular-list">
+          {{ $popular := where $pages "Params.popular" true }}
+          {{ if not $popular }}{{ $popular = first 3 $pages }}{{ end }}
+          {{ range first 3 $popular }}
+            <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <span>{{ .ReadingTime }} min read</span>
+            </li>
+          {{ end }}
+        </ol>
+      </section>
+
+      <section class="sidebar-card">
+        <span class="sidebar-card__eyebrow">Stay updated</span>
+        <h2>Follow without an algorithm</h2>
+        <p>RSS is the most reliable way to receive every new article. Updates are also shared on LinkedIn.</p>
+        <div class="sidebar-actions">
+          <a class="button button--primary" href="{{ "posts/index.xml" | relURL }}">RSS feed</a>
+          <a class="button button--quiet" href="{{ site.Params.linkedinURL }}" target="_blank" rel="me noopener">LinkedIn</a>
+        </div>
+        {{ with site.Params.newsletterURL }}
+          <a class="sidebar-secondary-link" href="{{ . }}" target="_blank" rel="noopener">Subscribe by email →</a>
+        {{ end }}
+      </section>
+
+      <section class="sidebar-card sidebar-card--compact">
+        <span class="sidebar-card__eyebrow">Independent by design</span>
+        <p>MeteSec is a personal, independently edited publication. No sponsored rankings and no paywalled articles.</p>
+        {{ with site.Params.kofiURL }}
+          <a class="kofi-link" href="{{ . }}" target="_blank" rel="noopener">☕ Buy the author a Ko-fi</a>
+        {{ end }}
+      </section>
+    </aside>
+  </div>
+{{ end }}

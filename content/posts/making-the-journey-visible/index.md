@@ -1,13 +1,20 @@
 ---
 title: "Why I Built MeteSec"
 date: 2026-07-31 14:02:00 +0200
+lastmod: 2026-07-31 14:02:00 +0200
 categories:
   - Journey
+series:
+  - MeteSec Journey
 tags:
   - Learning Journey
   - Cybersecurity Career
   - Security Culture
 description: "Why I created MeteSec as a place to document what I learn, share my perspective and bring my work together."
+popular: true
+recommended: true
+editorialStatus: "Experience and editorial perspective"
+verificationNote: "This article describes the purpose and editorial direction of MeteSec. Personal experience and opinion are identified as such."
 draft: false
 ---
 

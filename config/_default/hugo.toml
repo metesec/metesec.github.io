@@ -8,7 +8,7 @@ defaultContentLanguage = "en"
 
 enableRobotsTXT = true
 [pagination]
-  pagerSize = 20
+  pagerSize = 6
 summaryLength = 30
 
 buildDrafts = false
@@ -31,3 +31,20 @@ enableEmoji = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+
+[related]
+  includeNewer = true
+  threshold = 45
+  toLower = true
+
+  [[related.indices]]
+    name = "tags"
+    weight = 80
+
+  [[related.indices]]
+    name = "categories"
+    weight = 40
+
+  [[related.indices]]
+    name = "date"
+    weight = 10

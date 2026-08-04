@@ -1,4 +1,5 @@
 ---
 title: "Writing"
-description: "Cybersecurity notes, practical lessons, and reflections from the journey."
+description: "Practical cybersecurity notes, technical deep dives, and reflections from an ongoing journey."
+showBreadcrumbs: false
 ---

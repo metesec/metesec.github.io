@@ -1,0 +1,4 @@
+{{ with resources.Get "js/metesec.js" }}
+  {{ $script := . | resources.Minify | resources.Fingerprint "sha512" }}
+  <script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ end }}

@@ -1,14 +1,22 @@
 ---
 title: "Where My Cybersecurity Journey Began"
 date: 2026-07-31 15:48:00 +0200
+lastmod: 2026-08-04 12:00:00 +0200
 categories:
   - Journey
+series:
+  - MeteSec Journey
 tags:
   - Learning Journey
   - Cybersecurity Career
   - Network Security
   - Offensive Security
 description: "How a deliberately long certification path turned scattered technical knowledge into a framework for understanding IT and cybersecurity."
+popular: true
+recommended: true
+featured: true
+editorialStatus: "First-hand experience"
+verificationNote: "This article is a personal account. Certification names and exam formats reflect the author's experience at the time described."
 draft: false
 ---
 
