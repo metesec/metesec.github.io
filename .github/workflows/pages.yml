@@ -1,16 +1,10 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: Blowfish Docs Deploy
+name: Build and deploy MeteSec
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-
-  # Builds pull requests without deploying them
   pull_request:
     branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -19,54 +13,63 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
-# Default to bash
 defaults:
   run:
     shell: bash
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
-
       - name: Hugo setup
-        uses: peaceiris/actions-hugo@v2.6.0
-        with: 
-          hugo-version: 0.160.1
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 0.164.0
           extended: true
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
-      - name: Check out code into the Go module directory
+      - name: Check out repository
         uses: actions/checkout@v4
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: recursive
+          fetch-depth: 0
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v5
 
       - name: Build with Hugo
         env:
-          # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo -d ./public --baseURL https://metesec.github.io/
-    
+          hugo --minify --panicOnWarning -d ./public --baseURL https://metesec.github.io/
+
+      - name: Verify publishing experience
+        run: |
+          test -s public/posts/index.html
+          test -s public/posts/the-long-way-around/index.html
+          test -s public/editorial-policy/index.html
+          test -s public/privacy/index.html
+          test -s public/index.xml
+          test -s public/sitemap.xml
+          grep -q 'class=writing-hero' public/posts/index.html
+          grep -q 'id=reading-progress' public/posts/the-long-way-around/index.html
+          grep -q 'application/ld+json' public/posts/the-long-way-around/index.html
+          grep -q 'rel=canonical' public/posts/the-long-way-around/index.html
+          if grep -R -E '<a[^>]+href=(""|$)' public --include='*.html'; then
+            echo "Empty links found in generated HTML"
+            exit 1
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-  # Deployment job
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     environment:

@@ -1,0 +1,21 @@
+{{ if and site.Params.comments.enabled site.Params.comments.repo site.Params.comments.repoId site.Params.comments.categoryId }}
+  <section class="comments-panel" aria-labelledby="comments-heading">
+    <span class="article-verification__eyebrow">Discussion</span>
+    <h2 id="comments-heading">Questions, corrections, or another perspective?</h2>
+    <p>Join the public discussion. Please keep comments constructive and on topic.</p>
+    <script src="https://giscus.app/client.js"
+      data-repo="{{ site.Params.comments.repo }}"
+      data-repo-id="{{ site.Params.comments.repoId }}"
+      data-category="{{ site.Params.comments.category }}"
+      data-category-id="{{ site.Params.comments.categoryId }}"
+      data-mapping="pathname"
+      data-strict="1"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="transparent_dark"
+      data-lang="en"
+      crossorigin="anonymous"
+      async></script>
+  </section>
+{{ end }}

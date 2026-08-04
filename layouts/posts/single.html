@@ -1,0 +1,125 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "single" }}
+  <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+  <article class="professional-article">
+    {{ if .Params.showHero | default (site.Params.article.showHero | default false) }}
+      {{ $heroStyle := .Params.heroStyle | default site.Params.article.heroStyle }}
+      {{ $heroStyle = print "hero/" $heroStyle ".html" }}
+      {{ if templates.Exists (printf "partials/%s" $heroStyle) }}
+        {{ partial $heroStyle . }}
+      {{ else }}
+        {{ partial "hero/basic.html" . }}
+      {{ end }}
+    {{ end }}
+
+    <header id="single_header" class="article-header max-w-prose">
+      {{ if .Params.showBreadcrumbs | default (site.Params.article.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+      {{ end }}
+      <div class="article-kicker">{{ with index .Params.categories 0 }}{{ . }}{{ else }}MeteSec Writing{{ end }}</div>
+      <h1>{{ .Title | emojify }}</h1>
+      {{ with .Description }}<p class="article-deck">{{ . }}</p>{{ end }}
+      <div class="article-meta-row">
+        {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
+      </div>
+      {{ partial "author.html" . }}
+      <div class="article-assurance" aria-label="Editorial information">
+        <span><strong>Editorial basis</strong> {{ .Params.editorialStatus | default "Independent analysis" }}</span>
+        <span><strong>Last reviewed</strong> <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod | time.Format site.Params.dateFormat }}</time></span>
+        <a href="{{ "editorial-policy/" | relURL }}">How MeteSec verifies content</a>
+      </div>
+    </header>
+
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      {{ $enableToc := .Params.showTableOfContents | default (site.Params.article.showTableOfContents | default false) }}
+      {{ $showToc := and $enableToc (in .TableOfContents "<ul") }}
+      {{ $topClass := cond (hasPrefix site.Params.header.layout "fixed") "lg:top-[140px]" "lg:top-10" }}
+      {{ if $showToc }}
+        <aside class="article-toc order-first lg:ms-auto px-0 lg:order-last lg:ps-8 lg:max-w-2xs" aria-label="On this page">
+          <div class="toc ps-5 print:hidden lg:sticky {{ $topClass }}">
+            {{ partial "toc.html" . }}
+          </div>
+        </aside>
+      {{ end }}
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        {{ partial "series/series.html" . }}
+        <div class="article-content max-w-prose mb-12">
+          {{ .Content }}
+        </div>
+
+        <section class="article-verification max-w-prose" aria-labelledby="verification-heading">
+          <div>
+            <span class="article-verification__eyebrow">Transparency</span>
+            <h2 id="verification-heading">How this article was prepared</h2>
+          </div>
+          <p>{{ .Params.verificationNote | default "This article distinguishes documented facts, tested observations, interpretation, and personal opinion. Sources are linked where a claim depends on external material." }}</p>
+          {{ with .Params.sources }}
+            <h3>Sources and references</h3>
+            <ul>
+              {{ range . }}
+                <li><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a>{{ with .publisher }} — {{ . }}{{ end }}</li>
+              {{ end }}
+            </ul>
+          {{ end }}
+          <div class="article-verification__links">
+            <a href="{{ "sources-and-verification/" | relURL }}">Sources &amp; verification</a>
+            <a href="{{ "corrections/" | relURL }}">Corrections policy</a>
+            <a href="{{ "ai-disclosure/" | relURL }}">AI disclosure</a>
+          </div>
+        </section>
+
+        <section class="article-actions max-w-prose" aria-label="Share this article">
+          <div>
+            <span class="article-verification__eyebrow">Worth sharing?</span>
+            <h2>Pass it on</h2>
+          </div>
+          <div class="article-actions__buttons">
+            <button class="button button--quiet" id="copy-article-link" type="button">Copy link</button>
+            {{ partial "sharing-links.html" . }}
+          </div>
+        </section>
+
+        <section class="article-author-panel max-w-prose">
+          {{ with site.Params.Author.image }}
+            {{ $portrait := resources.Get . }}
+            {{ with $portrait }}
+              {{ $portrait = .Fill "192x192 webp q85" }}
+              <img src="{{ $portrait.RelPermalink }}" width="96" height="96" alt="Mete Demirci">
+            {{ end }}
+          {{ end }}
+          <div>
+            <span class="article-verification__eyebrow">About the author</span>
+            <h2>Mete Demirci</h2>
+            <p>{{ site.Params.Author.bio }}</p>
+            <div class="article-author-panel__links">
+              <a href="{{ "about/" | relURL }}">Full profile</a>
+              <a href="{{ site.Params.linkedinURL }}" target="_blank" rel="me noopener">LinkedIn</a>
+              {{ with site.Params.kofiURL }}<a class="kofi-link kofi-link--inline" href="{{ . }}" target="_blank" rel="noopener">☕ Buy me a Ko-fi</a>{{ end }}
+            </div>
+          </div>
+        </section>
+
+        {{ partial "series/series-closed.html" . }}
+        {{ partial "related.html" . }}
+
+        <section class="continue-exploring max-w-prose">
+          <span class="article-verification__eyebrow">Continue exploring</span>
+          <h2>Go beyond this article</h2>
+          <div>
+            <a href="{{ "posts/" | relURL }}"><strong>All writing</strong><span>Browse the complete archive</span></a>
+            <a href="{{ "tags/" | relURL }}"><strong>Topics</strong><span>Explore by subject area</span></a>
+            <a href="{{ "projects/" | relURL }}"><strong>Projects</strong><span>See practical work</span></a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer class="pt-8 max-w-prose print:hidden">
+      {{ partial "article-pagination.html" . }}
+      {{ if and site.Params.comments.enabled (templates.Exists "partials/comments.html") }}
+        <div class="pt-8">{{ partial "comments.html" . }}</div>
+      {{ end }}
+    </footer>
+  </article>
+{{ end }}

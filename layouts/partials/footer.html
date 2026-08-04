@@ -1,0 +1,54 @@
+<footer id="site-footer" class="site-footer print:hidden">
+  <div class="site-footer__grid">
+    <section class="site-footer__brand">
+      <a class="site-footer__logo" href="{{ site.Home.RelPermalink }}">MeteSec</a>
+      <p>Independent cybersecurity writing about building, breaking, and defending systems — grounded in practical work and honest reflection.</p>
+      <div class="site-footer__social">
+        <a href="{{ site.Params.githubURL }}" target="_blank" rel="me noopener">GitHub</a>
+        <a href="{{ site.Params.linkedinURL }}" target="_blank" rel="me noopener">LinkedIn</a>
+        <a href="{{ "index.xml" | relURL }}">RSS</a>
+      </div>
+      {{ with site.Params.kofiURL }}
+        <a class="kofi-link kofi-link--footer" href="{{ . }}" target="_blank" rel="noopener">☕ Buy the author a Ko-fi</a>
+      {{ end }}
+    </section>
+
+    <nav aria-label="Explore MeteSec">
+      <h2>Explore</h2>
+      <a href="{{ "posts/" | relURL }}">Writing</a>
+      <a href="{{ "tags/" | relURL }}">Topics</a>
+      <a href="{{ "projects/" | relURL }}">Projects</a>
+      <a href="{{ "talks/" | relURL }}">Talks</a>
+      <a href="{{ "certifications/" | relURL }}">Certifications</a>
+    </nav>
+
+    <nav aria-label="Follow MeteSec">
+      <h2>Stay current</h2>
+      <a href="{{ "posts/index.xml" | relURL }}">Articles via RSS</a>
+      <a href="{{ site.Params.linkedinURL }}" target="_blank" rel="me noopener">Updates on LinkedIn</a>
+      {{ with site.Params.newsletterURL }}<a href="{{ . }}" target="_blank" rel="noopener">Email newsletter</a>{{ end }}
+      <button type="button" onclick="window.displaySearch && window.displaySearch()">Search the site</button>
+    </nav>
+
+    <nav aria-label="Editorial and legal information">
+      <h2>Trust &amp; transparency</h2>
+      <a href="{{ "editorial-policy/" | relURL }}">Editorial policy</a>
+      <a href="{{ "sources-and-verification/" | relURL }}">Sources &amp; verification</a>
+      <a href="{{ "corrections/" | relURL }}">Corrections</a>
+      <a href="{{ "ai-disclosure/" | relURL }}">AI disclosure</a>
+      <a href="{{ "privacy/" | relURL }}">Privacy</a>
+      <a href="{{ "accessibility/" | relURL }}">Accessibility</a>
+      <a href="{{ "contact/" | relURL }}">Contact</a>
+      {{ with site.GetPage "/imprint" }}<a href="{{ .RelPermalink }}">Imprint</a>{{ end }}
+    </nav>
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>&copy; {{ now.Year }} Mete Demirci. Content may be quoted with attribution unless stated otherwise.</p>
+    <p>Built with Hugo and Blowfish. No advertising trackers.</p>
+  </div>
+  {{ if and (site.Params.footer.showScrollToTop | default true) }}
+    <span class="sr-only">Scroll-to-top control is available above.</span>
+  {{ end }}
+  {{ if templates.Exists "partials/extend-footer.html" }}{{ partialCached "extend-footer.html" . }}{{ end }}
+</footer>
