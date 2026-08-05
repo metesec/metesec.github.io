@@ -27,7 +27,7 @@
       <a href="{{ "posts/index.xml" | relURL }}">Articles via RSS</a>
       <a href="{{ site.Params.linkedinURL }}" target="_blank" rel="me noopener">Updates on LinkedIn</a>
       <a href="{{ site.Params.githubDiscussionsURL }}" target="_blank" rel="noopener">Community discussions</a>
-      {{ with site.Params.newsletterURL }}<a href="{{ . }}" target="_blank" rel="noopener">Email newsletter</a>{{ end }}
+      {{ with site.Params.newsletterURL }}<a href="{{ "posts/#newsletter" | relURL }}">Email newsletter</a>{{ end }}
       <button type="button" onclick="window.displaySearch && window.displaySearch()">Search the site</button>
     </nav>
 
