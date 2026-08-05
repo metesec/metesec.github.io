@@ -122,15 +122,27 @@
 
       <section class="sidebar-card">
         <span class="sidebar-card__eyebrow">Stay updated</span>
-        <h2>Follow without an algorithm</h2>
-        <p>RSS is the most reliable way to receive every new article. Updates are also shared on LinkedIn.</p>
+        <h2>Get MeteSec by email</h2>
+        <p>New cybersecurity articles and occasional project updates. No weekly filler.</p>
+        {{ with site.Params.newsletterURL }}
+          <form class="newsletter-form" method="post" action="{{ . }}" target="_blank" accept-charset="UTF-8">
+            <label for="newsletter-email">Email address</label>
+            <div class="newsletter-form__row">
+              <input id="newsletter-email" name="EMAIL" type="email" autocomplete="email" placeholder="you@example.com" required>
+              <button class="button button--primary" type="submit">Subscribe</button>
+            </div>
+            <input class="newsletter-form__honeypot" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <input type="hidden" name="locale" value="en">
+            <input type="hidden" name="html_type" value="simple">
+            <p class="newsletter-form__consent">
+              By subscribing, you consent to receiving the MeteSec newsletter via Brevo. Confirm your address through the email we send you. You can unsubscribe at any time. See the <a href="{{ "privacy/" | relURL }}">privacy notice</a>.
+            </p>
+          </form>
+        {{ end }}
         <div class="sidebar-actions">
-          <a class="button button--primary" href="{{ "posts/index.xml" | relURL }}">RSS feed</a>
+          <a class="button button--quiet" href="{{ "posts/index.xml" | relURL }}">RSS feed</a>
           <a class="button button--quiet" href="{{ site.Params.linkedinURL }}" target="_blank" rel="me noopener">LinkedIn</a>
         </div>
-        {{ with site.Params.newsletterURL }}
-          <a class="sidebar-secondary-link" href="{{ . }}" target="_blank" rel="noopener">Subscribe by email →</a>
-        {{ end }}
       </section>
 
       <section class="sidebar-card sidebar-card--compact">
