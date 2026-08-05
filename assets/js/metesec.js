@@ -57,4 +57,29 @@
       });
     });
   }
+
+  document.querySelectorAll("[data-goatcounter-code][data-goatcounter-path]").forEach(function (counter) {
+    const code = counter.dataset.goatcounterCode;
+    const path = counter.dataset.goatcounterPath;
+    if (!code || !path) return;
+
+    const counterPath = path === "TOTAL" ? "TOTAL" : (path.startsWith("/") ? path : "/" + path);
+    const endpoint = "https://" + code + ".goatcounter.com/counter/" + counterPath + ".json";
+
+    fetch(endpoint, { credentials: "omit", referrerPolicy: "no-referrer" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("Counter unavailable");
+        return response.json();
+      })
+      .then(function (data) {
+        const value = counter.querySelector("[data-goatcounter-value]");
+        const count = data.count_unique || data.count;
+        if (!value || count === undefined || count === null) return;
+        value.textContent = new Intl.NumberFormat(document.documentElement.lang || "en").format(Number(count));
+        counter.hidden = false;
+      })
+      .catch(function () {
+        counter.hidden = true;
+      });
+  });
 })();

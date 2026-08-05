@@ -13,10 +13,12 @@ title = "MeteSec"
 
 [params.author]
   name = "Mete Demirci"
+  email = "metesec@outlook.com"
   image = "img/20221007-Bewerbungsbild.jpg"
   headline = "Build. Break. Defend."
   bio = "Documenting a cybersecurity journey through practical work, technical depth, and honest reflection."
   links = [
+    { email = "mailto:metesec@outlook.com" },
     { github = "https://github.com/metesec" },
     { linkedin = "https://www.linkedin.com/in/mete-demirci-011057253" }
   ]

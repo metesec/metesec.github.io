@@ -26,6 +26,7 @@
       <h2>Stay current</h2>
       <a href="{{ "posts/index.xml" | relURL }}">Articles via RSS</a>
       <a href="{{ site.Params.linkedinURL }}" target="_blank" rel="me noopener">Updates on LinkedIn</a>
+      <a href="{{ site.Params.githubDiscussionsURL }}" target="_blank" rel="noopener">Community discussions</a>
       {{ with site.Params.newsletterURL }}<a href="{{ . }}" target="_blank" rel="noopener">Email newsletter</a>{{ end }}
       <button type="button" onclick="window.displaySearch && window.displaySearch()">Search the site</button>
     </nav>
@@ -39,13 +40,16 @@
       <a href="{{ "privacy/" | relURL }}">Privacy</a>
       <a href="{{ "accessibility/" | relURL }}">Accessibility</a>
       <a href="{{ "contact/" | relURL }}">Contact</a>
-      {{ with site.GetPage "/imprint" }}<a href="{{ .RelPermalink }}">Imprint</a>{{ end }}
+      {{ with site.GetPage "/imprint" }}<a href="{{ .RelPermalink }}">Impressum</a>{{ end }}
     </nav>
   </div>
 
   <div class="site-footer__bottom">
     <p>&copy; {{ now.Year }} Mete Demirci. Content may be quoted with attribution unless stated otherwise.</p>
-    <p>Built with Hugo and Blowfish. No advertising trackers.</p>
+    <p>
+      Built with Hugo and Blowfish. No advertising trackers.
+      {{ with site.Params.goatcounterCode }}<span class="site-view-count" data-goatcounter-code="{{ . }}" data-goatcounter-path="TOTAL" hidden>Site views: <strong data-goatcounter-value>—</strong></span>{{ end }}
+    </p>
   </div>
   {{ if and (site.Params.footer.showScrollToTop | default true) }}
     <span class="sr-only">Scroll-to-top control is available above.</span>

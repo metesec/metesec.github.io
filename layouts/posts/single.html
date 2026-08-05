@@ -26,6 +26,7 @@
       <div class="article-assurance" aria-label="Editorial information">
         <span><strong>Editorial basis</strong> {{ .Params.editorialStatus | default "Independent analysis" }}</span>
         <span><strong>Last reviewed</strong> <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod | time.Format site.Params.dateFormat }}</time></span>
+        {{ with site.Params.goatcounterCode }}<span class="article-view-count" data-goatcounter-code="{{ . }}" data-goatcounter-path="{{ $.RelPermalink }}" hidden><strong>Views</strong> <span data-goatcounter-value>—</span></span>{{ end }}
         <a href="{{ "editorial-policy/" | relURL }}">How MeteSec verifies content</a>
       </div>
     </header>
@@ -110,6 +111,7 @@
             <a href="{{ "posts/" | relURL }}"><strong>All writing</strong><span>Browse the complete archive</span></a>
             <a href="{{ "tags/" | relURL }}"><strong>Topics</strong><span>Explore by subject area</span></a>
             <a href="{{ "projects/" | relURL }}"><strong>Projects</strong><span>See practical work</span></a>
+            <a href="{{ site.Params.githubDiscussionsURL }}" target="_blank" rel="noopener"><strong>Discuss</strong><span>Join the GitHub community</span></a>
           </div>
         </section>
       </div>
