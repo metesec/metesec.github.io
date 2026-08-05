@@ -1469,6 +1469,69 @@
   min-width: 6rem;
 }
 
+.newsletter-form {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.newsletter-form > label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: rgb(var(--metesec-text));
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.newsletter-form__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.5rem;
+}
+
+.newsletter-form__row input {
+  width: 100%;
+  min-width: 0;
+  min-height: 2.7rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgb(var(--metesec-border));
+  border-radius: 0.65rem;
+  background: rgba(var(--metesec-panel), 0.9);
+  color: rgb(var(--metesec-text));
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.newsletter-form__row input:focus-visible {
+  border-color: rgb(var(--metesec-accent));
+  outline: 3px solid rgba(var(--metesec-accent), 0.2);
+  outline-offset: 1px;
+}
+
+.newsletter-form__row .button {
+  min-height: 2.7rem;
+  padding-inline: 0.85rem;
+}
+
+.newsletter-form__consent {
+  margin: 0.65rem 0 0;
+  color: rgb(var(--metesec-muted));
+  font-size: 0.67rem;
+  line-height: 1.5;
+}
+
+.newsletter-form__consent a {
+  color: rgb(var(--metesec-accent));
+  font-weight: 750;
+}
+
+.newsletter-form__honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
 .kofi-link {
   display: inline-flex;
   width: 100%;
@@ -1534,6 +1597,10 @@
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .newsletter-form__row {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
