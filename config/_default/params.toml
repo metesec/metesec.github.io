@@ -14,10 +14,12 @@ defaultBackgroundImage = "img/background.svg"
 defaultSocialImage = "img/background.svg"
 linkedinURL = "https://www.linkedin.com/in/mete-demirci-011057253"
 githubURL = "https://github.com/metesec"
+githubDiscussionsURL = "https://github.com/metesec/metesec.github.io/discussions"
 # Add these URLs once the external accounts are ready. Their UI is already
 # implemented and appears automatically when a value is configured.
 newsletterURL = ""
 kofiURL = ""
+goatcounterCode = ""
 
 [header]
   layout = "fixed"
@@ -97,7 +99,7 @@ kofiURL = ""
   enabled = false
   provider = "giscus"
   repo = "metesec/metesec.github.io"
-  repoId = ""
+  repoId = "R_kgDOToV_Pg"
   category = "Announcements"
-  categoryId = ""
+  categoryId = "DIC_kwDOToV_Ps4DCtR-"
 
